@@ -1,4 +1,4 @@
-use std::fs::File;
+use std::fs;
 use std::io;
 
 fn main() {
@@ -7,9 +7,10 @@ fn main() {
 
     let path = path.trim_end_matches(&['\n', '\r'][..]);
 
-    let file = File::open(path);
 
-    match file {
+    let result = fs::read_to_string(path);
+
+    match result {
         Ok(_) => {
             println!("success");
         }
