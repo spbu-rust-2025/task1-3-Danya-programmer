@@ -13,7 +13,7 @@ fn main() {
         return;
     }
     let file: Result<File, io::Error> = File::open(path);
-    println!("{}", path);
+
     match file {
         Ok(_) => {
             println!("success");
