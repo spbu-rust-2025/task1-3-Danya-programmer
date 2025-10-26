@@ -10,6 +10,11 @@ fn main() {
         println!("failure");
         return;
     }
+    let normalized_path = path.trim_end_matches('/');
+    if normalized_path.is_empty() || normalized_path == "/" {
+        println!("failure");
+        return;
+    }
     let file: Result<File, io::Error> = File::open(path);
     println!("{}", path);
     match file {
