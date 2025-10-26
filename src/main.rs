@@ -1,16 +1,15 @@
-use std::fs;
+use std::fs::File;
 use std::io;
 
 fn main() {
     let mut path = String::new();
     let _ = io::stdin().read_line(&mut path);
 
-    let path = path.trim_end_matches(&['\n', '\r'][..]);
+    let path = path.trim();
 
+    let file = File::open(path);
 
-    let result = fs::read_to_string(path);
-
-    match result {
+    match file {
         Ok(_) => {
             println!("success");
         }
