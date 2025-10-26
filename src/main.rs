@@ -6,9 +6,12 @@ fn main() {
     let _ = io::stdin().read_line(&mut path);
 
     let path = path.trim();
-
-    let file = File::open(path);
-
+    if path == "/" {
+        println!("failure");
+        return;
+    }
+    let file: Result<File, io::Error> = File::open(path);
+    println!("{}", path);
     match file {
         Ok(_) => {
             println!("success");
